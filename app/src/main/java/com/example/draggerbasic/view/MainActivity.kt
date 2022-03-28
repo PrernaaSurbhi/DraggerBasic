@@ -26,9 +26,7 @@ class MainActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = countriesAdapter
         }
-
         observeViewModel()
-
     }
 
     fun observeViewModel(){
