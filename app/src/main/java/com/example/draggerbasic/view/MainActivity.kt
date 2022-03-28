@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.draggerbasic.R
 import com.example.draggerbasic.databinding.ActivityMainBinding
 import com.example.draggerbasic.viewModel.ListViewModel
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     lateinit var  listViewModel:ListViewModel
@@ -25,6 +26,11 @@ class MainActivity : AppCompatActivity() {
         binding.countriesList.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = countriesAdapter
+        }
+
+        swipeRefreshLayout.setOnRefreshListener {
+            swipeRefreshLayout.isRefreshing = false
+            binding.viewModel?.refresh()
         }
         observeViewModel()
     }

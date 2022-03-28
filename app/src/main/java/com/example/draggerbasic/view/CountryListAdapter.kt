@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.draggerbasic.databinding.CountryItemBinding
 import com.example.draggerbasic.model.Country
+import com.example.draggerbasic.util.getProgressDrawable
+import com.example.draggerbasic.util.loadImage
 
 
 /**
@@ -35,10 +37,12 @@ class CountryListAdapter(var countries: ArrayList<Country>) :
 
     class CountryViewHolder(var binding: CountryItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        private val progressDrawable = getProgressDrawable(binding.root.context)
 
         fun bind(country: Country) {
             binding.name.text = country.countryName
-
+            binding.capital.text  = country.capital
+            binding.imageView.loadImage(country.flag,progressDrawable = progressDrawable)
         }
     }
 
